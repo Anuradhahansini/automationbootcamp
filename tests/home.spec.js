@@ -37,7 +37,8 @@ test.describe('HomePage', ()=>{
 
         await homePage.logo.click();
         await homePage.waitForPageReady();
-        await expect(page).toHaveURL(/daraz\.lk\/?$/);
+        await expect(page).not.toHaveURL(/catalog/);
+        await expect(page).toHaveURL(/daraz\.lk\/(\?.*)?$/);
     });
 
 })

@@ -8,7 +8,7 @@ const SELECTORS = {
     languageSwitch: '#topActionSwitchLang',
     searchInput: '#q',
     searchSuggestItem: '[class*="suggest-list"] a[class*="suggest-common"]',
-    cartTrigger: '.lzd-nav-cart a',
+    cartTrigger: '.lzd-nav-cart',
     cartBadge: '#topActionCartNumber',
     logo: 'a[data-spm="dhome"]',
     productItem: '[data-qa-locator="product-item"]',
@@ -16,6 +16,8 @@ const SELECTORS = {
     priceMaxInput: 'input[placeholder="Max"]',
     priceApplyBtn: 'div:has(> input[placeholder="Min"]) button',
     brandCheckbox: 'input[businesstype="brand"]',
+    accountMenuTrigger: '#topActionUserAccont',
+    logoutLink: '#account-popup-logout',
 };
 
 const ROUTES = {
