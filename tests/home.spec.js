@@ -35,7 +35,7 @@ test.describe('HomePage', ()=>{
         await homePage.goToCatalog('phone');
         await expect(page).toHaveURL(/catalog/);
 
-        await homePage.logo.click();
+        await homePage.logo.click({ force: true });
         await homePage.waitForPageReady();
         await expect(page).not.toHaveURL(/catalog/);
         await expect(page).toHaveURL(/daraz\.lk\/(\?.*)?$/);

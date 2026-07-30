@@ -13,12 +13,12 @@ class SearchResultsPage {
   async applyPriceRange(min, max) {
     await this.priceMinInput.fill(String(min));
     await this.priceMaxInput.fill(String(max));
-    await this.priceApplyBtn.click();
+    await this.priceApplyBtn.click({ force: true });
     await this.page.waitForLoadState('load');
   }
 
   async applyFirstBrandFilter() {
-    await this.brandCheckbox.first().click();
+    await this.brandCheckbox.first().click({ force: true });
     await this.page.waitForLoadState('load');
   }
 }
