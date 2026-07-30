@@ -1,40 +1,39 @@
-import { exports} from '@playwright/test';
+const { expect } = require('@playwright/test');
+const { SELECTORS, TIMEOUTS } = require('../common/constants');
+const { logInfo } = require('../util/loggers');
 
 class BasePage {
-    constructor(page){
-        this.page =page;
-    }
+  constructor(page) {
+    this.page = page;
+  }
 
-    async goto(path='/'){
-        await this.page.goto(path);
+  async goto(path = '/') {
+    await this.page.goto(path);
+    await this.closePopup();
+  }
 
-    }
-
-     async waitForPageReady() {
+  async waitForPageReady() {
     await this.page.waitForLoadState('load');
   }
 
   async closePopup() {
     try {
       const closeBtn = this.page.locator('.popup-close, .close-btn').first();
-
+      
       if (await closeBtn.isVisible({ timeout: 5000 })) {
         await closeBtn.click();
         logInfo('Popup dismissed');
       } else {
-        console.log('No popup to dismiss');
+        logInfo('No popup to dismiss');
       }
     } catch (error) {
-      console.log(`No popup to dismiss (${error.message})`);
+      logInfo(`No popup to dismiss (${error.message})`);
     }
   }
 
-// //   async expectVisible(locator, options = {}) {
-//     await expect(locator).toBeVisible({ timeout: TIMEOUTS.default, ...options });
-//   }
-
-
-
+  async expectVisible(locator, options = {}) {
+    await expect(locator).toBeVisible({ timeout: TIMEOUTS.default, ...options });
+  }
 }
 
-module.exports ={BasePage}
+module.exports = { BasePage, SELECTORS, TIMEOUTS };
