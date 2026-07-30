@@ -14,7 +14,7 @@ class LoginPage {
   }
 
   async openLoginModal() {
-    await this.loginTrigger.click();
+    await this.loginTrigger.click({ force: true });
   }
 
   async submitCredentials(email, password) {

@@ -11,6 +11,11 @@ const SELECTORS = {
     cartTrigger: '.lzd-nav-cart',
     cartBadge: '#topActionCartNumber',
     logo: 'a[data-spm="dhome"]',
+    productItem: '[data-qa-locator="product-item"]',
+    priceMinInput: 'input[placeholder="Min"]',
+    priceMaxInput: 'input[placeholder="Max"]',
+    priceApplyBtn: 'div:has(> input[placeholder="Min"]) button',
+    brandCheckbox: 'input[businesstype="brand"]',
     accountMenuTrigger: '#topActionUserAccont',
     logoutLink: '#account-popup-logout',
 };

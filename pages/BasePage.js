@@ -8,6 +8,13 @@ class BasePage {
   }
 
   async goto(path = '/') {
+    await this.page.addInitScript(() => {
+      const stripOverlays = () => {
+        document.querySelectorAll('.J_MIDDLEWARE_FRAME_WIDGET, .baxia-dialog-mask, .baxia-dialog').forEach((el) => el.remove());
+      };
+      stripOverlays();
+      new MutationObserver(stripOverlays).observe(document.documentElement, { childList: true, subtree: true });
+    });
     await this.page.goto(path);
     await this.closePopup();
   }

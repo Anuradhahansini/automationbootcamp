@@ -15,7 +15,8 @@ class SearchBar {
 
   async searchSuggest(keyword) {
     await this.searchInput.fill(keyword);
-    await this.searchSuggestList.first().waitFor({ state: 'visible' });
+    await this.searchInput.press('End');
+    await this.searchSuggestList.first().waitFor({ state: 'visible', timeout: 30000 });
   }
 }
 
