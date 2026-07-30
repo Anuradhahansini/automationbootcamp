@@ -11,6 +11,8 @@ const SELECTORS = {
     cartTrigger: '.lzd-nav-cart',
     cartBadge: '#topActionCartNumber',
     logo: 'a[data-spm="dhome"]',
+    accountMenuTrigger: '#topActionUserAccont',
+    logoutLink: '#account-popup-logout',
 };
 
 const ROUTES = {
