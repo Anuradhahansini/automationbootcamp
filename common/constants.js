@@ -7,6 +7,7 @@ const SELECTORS = {
     loginError: '.next-feedback-error, .next-feedback-error, [class*="error"]',
     searchInput: '#q',
     searchSuggestList: '[class*="suggest-list"] a',
+    languageSwitch: '#topActionSwitchLang',
 };
 
 const ROUTES = {
