@@ -8,7 +8,7 @@ const SELECTORS = {
     languageSwitch: '#topActionSwitchLang',
     searchInput: '#q',
     searchSuggestItem: '[class*="suggest-list"] a[class*="suggest-common"]',
-    cartTrigger: '.lzd-nav-cart a',
+    cartTrigger: '.lzd-nav-cart',
     cartBadge: '#topActionCartNumber',
     logo: 'a[data-spm="dhome"]',
 };
