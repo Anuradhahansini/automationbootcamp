@@ -9,6 +9,7 @@ test.describe('Auth & Language', () => {
   let loginPage;
   let settingsPage;
   const userData = users.valid;
+  const invalidData = users.invalid;
 
   test.beforeEach(async ({ page }) => {
     homePage = new HomePage(page);
@@ -22,6 +23,23 @@ test.describe('Auth & Language', () => {
     await expect(loginPage.accountTrigger).toHaveText(
       new RegExp(userData.displayName, 'i')
     );
+  });
+
+  test('TC-14: Login modal shows email and password fields', async () => {
+    await loginPage.openLoginModal();
+    await loginPage.expectLoginFormVisible();
+  });
+
+  test('TC-15: Invalid credentials do not log user in', async () => {
+    await loginPage.loginWithInvalidCredentials(invalidData.email, invalidData.password);
+  });
+
+  test('TC-16: Logout returns user to guest state', async () => {
+    await loginPage.login(userData.email, userData.password);
+    await expect(loginPage.accountTrigger).toBeVisible();
+
+    await loginPage.logout();
+    await expect(loginPage.loginTrigger).toBeVisible();
   });
 
   test('TC02 : Verify multi-language support and UI localization', async ({page}) => {

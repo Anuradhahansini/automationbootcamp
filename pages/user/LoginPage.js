@@ -9,6 +9,8 @@ class LoginPage {
     this.passwordInput = page.locator('input[type="password"]');
     this.loginBtn = page.getByRole('button', { name: 'LOGIN' });
     this.accountTrigger = page.locator(SELECTORS.accountTrigger);
+    this.accountMenuTrigger = page.locator(SELECTORS.accountMenuTrigger);
+    this.logoutLink = page.locator(SELECTORS.logoutLink);
   }
 
   async openLoginModal() {
@@ -52,6 +54,12 @@ class LoginPage {
     await expect(this.emailInput).toBeVisible();
     await expect(this.passwordInput).toBeVisible();
     await expect(this.loginBtn).toBeVisible();
+  }
+
+  async logout() {
+    const logoutHref = await this.logoutLink.getAttribute('href');
+    await this.page.goto(logoutHref);
+    await this.page.waitForLoadState('load');
   }
 }
 
