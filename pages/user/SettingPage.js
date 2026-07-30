@@ -8,7 +8,7 @@ class SettingsPage {
 
   async switchLanguage(langCode) {
     await this.languageSwitch.click({ force: true });
-    await this.page.locator([data-lang="${langCode}"]).click({ force: true });
+    await this.page.locator(`[data-lang="${langCode}"]`).click({ force: true });
     await this.page.waitForLoadState('load');
   }
 }

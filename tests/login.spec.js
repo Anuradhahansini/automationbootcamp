@@ -1,8 +1,8 @@
 const { test, expect } = require('@playwright/test');
-const { HomePage } = require('../../pages/home/HomePage');
-const { LoginPage } = require('../../pages/user/LoginPage');
-const { SettingsPage } = require('../../pages/user/SettingsPage');
-const users = require('../../data/users.json');
+const { HomePage } = require('../pages/home/HomePage');
+const { LoginPage } = require('../pages/user/LoginPage');
+const { SettingsPage } = require('../pages/user/SettingPage');
+const users = require('../data/user.json');
 
 test.describe('Auth & Language', () => {
   let homePage;

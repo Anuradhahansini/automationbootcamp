@@ -1,24 +1,24 @@
-const { expect } = require('@playwright/test');
 const { BasePage } = require('../BasePage');
 const { SELECTORS } = require('../../common/constants');
 
-class HomePage extends BasePage {
+class SearchBar extends BasePage {
   constructor(page) {
     super(page);
-    this.loginTrigger = page.locator(SELECTORS.loginTrigger);
-
+    this.searchInput = page.locator(SELECTORS.searchInput);
+    this.searchButton = page.getByRole('link', { name: 'SEARCH' });
+    this.searchSuggestList = page.locator(SELECTORS.searchSuggestList);
   }
 
-  async open() {
-    await this.goto('/');
+  async search(term) {
+    await this.searchInput.fill(term);
+    await this.searchButton.click();
     await this.waitForPageReady();
   }
 
-  async expectHomeLoaded() {
-    await expect(this.page).toHaveURL(/daraz\.lk/);
-    await expect(this.page).toHaveTitle(/Daraz/i);
+  async searchSuggest(term) {
+    await this.searchInput.fill(term);
+    await this.searchSuggestList.first().waitFor({ state: 'visible' });
   }
- 
 }
 
-module.exports = { HomePage };
+module.exports = { SearchBar };

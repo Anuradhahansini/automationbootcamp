@@ -1,7 +1,7 @@
 const {test,expect} = require('@playwright/test');
-const { HomePage } = require('../../pages/home/HomePage');
-const {SearchBar} = require('../../pages/common/SearchBar');
-const productsList = require('../../data/products.json');
+const { HomePage } = require('../pages/home/HomePage');
+const {SearchBar} = require('../pages/common/searchBar');
+const productsList = require('../data/product.json');
 
 
 test.describe('Search Test',()=>{
@@ -18,9 +18,9 @@ test.describe('Search Test',()=>{
     })
 
     test('TC-03: Verify product search accuracy for specific keywords', async ({page}) => {
-        let phone  = products.phone;
+        let phone  = products.phones;
         await searchBar.search(phone.search_key);
-        await expect(page.locator('body')).toContainText(items found for "${phone.search_key}",{ignoreCase:true});
+        await expect(page.locator('body')).toContainText(`items found for "${phone.search_key}"`,{ignoreCase:true});
     });
 
 
@@ -28,8 +28,7 @@ test.describe('Search Test',()=>{
         let suggest  = products.suggest;
         await searchBar.searchSuggest(suggest.search_key);
         await expect(searchBar.searchSuggestList.first()).toBeVisible();
- 
-    }
+    });
   
 
 

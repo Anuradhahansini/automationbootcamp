@@ -5,6 +5,8 @@ const SELECTORS = {
     accountTrigger: '#myAccountTrigger',
     dialogClose: '.next-dialog-close',
     loginError: '.next-feedback-error, .next-feedback-error, [class*="error"]',
+    searchInput: '#q',
+    searchSuggestList: '[class*="suggest-list"] a',
 };
 
 const ROUTES = {

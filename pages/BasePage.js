@@ -27,7 +27,7 @@ class BasePage {
         logInfo('No popup to dismiss');
       }
     } catch (error) {
-      logInfo(No popup to dismiss (${error.message}));
+      logInfo(`No popup to dismiss (${error.message})`);
     }
   }
 
